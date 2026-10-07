@@ -1,0 +1,47 @@
+@model VehicleBookingSystem.Models.Booking
+
+<h2>Book Vehicle</h2>
+
+<form method="post">
+
+<label>Name</label><br/>
+<input type="text" name="CustomerName" required /><br/><br/>
+
+<label>Pickup Location</label><br/>
+<input type="text" id="pickup" name="PickupLocation" required /><br/><br/>
+
+<label>Drop Location</label><br/>
+<input type="text" id="drop" name="DropLocation" required /><br/><br/>
+
+<label>Vehicle</label><br/>
+<select id="vehicle" name="VehicleType">
+<option value="10">Bike (₹10/km)</option>
+<option value="15">Auto (₹15/km)</option>
+<option value="20">Car (₹20/km)</option>
+</select>
+
+<br/><br/>
+
+<label>Distance (km)</label><br/>
+<input type="text" id="distance" name="Distance" readonly /><br/><br/>
+
+<label>Total Price</label><br/>
+<input type="text" id="price" name="Price" readonly /><br/><br/>
+
+<button type="button" onclick="calculate()">Calculate Price</button>
+<button type="submit">Continue Payment</button>
+
+</form>
+
+<script>
+function calculate(){
+
+let distance = Math.floor(Math.random()*10)+1;
+document.getElementById("distance").value = distance;
+
+let rate = document.getElementById("vehicle").value;
+let price = distance * rate;
+
+document.getElementById("price").value = price;
+}
+</script>
